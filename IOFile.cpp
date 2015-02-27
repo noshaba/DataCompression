@@ -1,7 +1,9 @@
 #include "IOFile.hpp"
+#include <cstdlib>
 
 std::vector<unsigned char> getTextChars(std::string filename){
 	std::fstream myfile(filename.c_str(), std::ios::in | std::ios::binary);
+	
 	std::vector<unsigned char> textChars;
 	if(myfile.is_open() && myfile.good()){
 		if(filename.substr(filename.find_last_of(".") + 1) == "txt" || filename.substr(filename.find_last_of(".") + 1) == "huffman"){
@@ -19,7 +21,7 @@ std::vector<unsigned char> getTextChars(std::string filename){
 		}
 		myfile.close();
 	} else {
-		throw eFileNotFoundException();
+		throw;
 	}
 	
 	return textChars;

@@ -1,4 +1,5 @@
 #include "Entropy.hpp"
+#include <cstdlib>
 
 Entropy::Entropy(std::string filename) {
 	try{
@@ -15,7 +16,7 @@ Entropy::Entropy(std::string filename) {
 		}
 		amountDifferentChars = charInfMapInf.size();
 	} catch(...){
-		throw eFileNotFoundException();
+		throw;
 	}
 };
 

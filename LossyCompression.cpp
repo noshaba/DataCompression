@@ -29,7 +29,7 @@ void LossyCompression::dataCompression(std::string filename, double scalar, doub
 			std::cerr << "ERROR: Scalar 1 must be >= 0, scalar 2 must be >= 1." << std::endl;
 		}
 	} else {
-		throw eInvalidFileFormatException();
+		throw;
 	}
 };
 
@@ -49,10 +49,10 @@ void LossyCompression::dataDecompression(std::string filename){
 			this->deQuantization();
 			this->setDecompressedImg(filename);
 		} catch(...){
-			throw eFileNotFoundException();
+			throw;
 		}
 	} else {
-		throw eInvalidFileFormatException();
+		throw;
 	}
 };
 
@@ -118,7 +118,7 @@ void LossyCompression::setHeader(){
 			}
 		}
 	} else {
-		throw eMagicNumberException();
+		throw;
 	}
 };
 
@@ -383,7 +383,7 @@ void LossyCompression::setCompressedImg(std::string filename){
 		this->huffman = new Huffman<CharInf<unsigned char> >();
 		this->huffman->compressFile(newFileName);
 	} catch(...){
-		throw eFileException();
+		throw;
 	}
 };
 
@@ -429,7 +429,7 @@ std::string LossyCompression::compressedDataToString(){
 		}
 		printString = ss.str();
 	} else {
-		throw eMustBeFileToBeCompressedException();
+		throw;
 	}
 	return printString;
 };
@@ -449,7 +449,7 @@ std::string LossyCompression::decompressedDataToString(){
 		}
 		printString = ss.str();
 	} else {
-		throw eMustBeFileToBeDecompressedException();
+		throw;
 	}
 	return printString;
 };

@@ -44,7 +44,7 @@ void DataCompression::entropyCompression(){
 		this->hc->compressFile(path);
 		std::cout << hc->encodingDataToString() << std::endl;
 	} catch (...){
-		throw eFileException();
+		throw;
 	}
 	this->menu();
 };
@@ -58,7 +58,7 @@ void DataCompression::entropyDecompression(){
 		this->hc->decompressFile(path);
 		std::cout << hc->decodingDataToString() << std::endl;
 	} catch (...){
-		throw eFileException();
+		throw;
 	}
 	this->menu();
 };
@@ -79,8 +79,8 @@ void DataCompression::lossyCompression(){
 	try{
 		this->lc->dataCompression(path, scalar1, scalar2);
 		std::cout << this->lc->compressedDataToString() << std::endl;
-	}catch (...){
-		throw eFileException();
+	} catch (...) {
+		throw;
 	}
 	this->menu();
 };
@@ -93,8 +93,8 @@ void DataCompression::decompressLossy(){
 	try{
 		this->lc->dataDecompression(path);
 		std::cout << this->lc->decompressedDataToString() << std::endl;
-	}catch (...){
-		throw eFileException();
+	} catch (...) {
+		throw;
 	}
 	this->menu();
 };
